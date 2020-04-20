@@ -1,6 +1,5 @@
 .income-expenses {
     background-color: #fff;
-    box-shadow: var(--box-shadow);
     padding: 20px;
     display: flex;
     justify-content: space-between;
