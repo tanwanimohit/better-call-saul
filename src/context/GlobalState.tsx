@@ -2,38 +2,53 @@ import React, { Reducer } from 'react'
 
 import { AppReducer } from './AppReducer';
 
-interface  Itransaction{
-    id:number;
-    text:string;
-    amount:number;
+export interface Itransaction {
+    id: number;
+    text: string;
+    amount: number;
 }
 
-interface ITransactions{
-    transactions:Itransaction[];
+export interface ITransactions {
+    transactions: Itransaction[];
+    deleteTransaction? :(id:number)=>void;
+    addTransaction?:(transaction:Itransaction)=>void;
 }
 
-const initialState:ITransactions = {
-    transactions: [
-        {id:1,text:'Flower', amount:-20},
-        {id:2,text:'Salary', amount:300},
-        {id:3,text:'Book', amount:-10}
-    ]
-}
 
-interface IAction {
+export interface IAction {
     type: string;
-    payload: {
-        transactions:Itransaction[];
-    };
+    payload: any
+}
+
+//Default Value
+const initialState: ITransactions = {
+    transactions: []
 }
 
 //Context
 export const GlobalContext = React.createContext(initialState);
 
 //Provider 
-export const GlobalProvider = ({ children}: any) => {
-    const [state, dispatch] = React.useReducer<Reducer<ITransactions,IAction>>(AppReducer,initialState);
-    return (<GlobalContext.Provider value={{transactions:state.transactions}}>
-        {children}    
+export const GlobalProvider = ({ children }: any) => {
+    const [state, dispatch] = React.useReducer<Reducer<ITransactions, IAction>>(AppReducer, initialState);
+
+    const deleteTransaction = (id: number) => {
+        dispatch({
+            type: "DELETE_TRANSACTION",
+            payload: id
+
+        });
+    }
+
+    const addTransaction = (transaction: Itransaction) => {
+        dispatch({
+            type: "ADD_TRANSACTION",
+            payload: transaction
+
+        });
+    }
+
+    return (<GlobalContext.Provider value={{ transactions: state.transactions,deleteTransaction,addTransaction }}>
+        {children}
     </GlobalContext.Provider>)
 }

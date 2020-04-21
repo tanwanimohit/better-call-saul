@@ -1,27 +1,18 @@
+import { ITransactions, IAction } from './GlobalState'
 
-interface  Itransaction{
-    id:number;
-    text:string;
-    amount:number;
-}
-
-interface ITransactions{
-    transactions:Itransaction[];
-}
-
-
-
-interface IAction {
-    type: string;
-    payload: {
-        transactions:Itransaction[];
-    };
-}
-
-
-export const AppReducer : React.Reducer<ITransactions,IAction> = (state, action) => {
+export const AppReducer: React.Reducer<ITransactions, IAction> = (state, action) => {
     switch (action.type) {
-      default:
-        return state;
+        case "DELETE_TRANSACTION":
+            return{
+                ...state,
+                transactions:state.transactions.filter(transaction => transaction.id!==action.payload)
+            }
+        case "ADD_TRANSACTION":
+            return{
+                ...state,
+                transactions:[action.payload,...state.transactions]
+            }
+        default:
+            return state;
     }
-  }
+}
