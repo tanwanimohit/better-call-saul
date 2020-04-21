@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.css'
 export const Addtransaction = () => {
-    const [text,setText] = React.useState("");
+    const [text,setText] = React.useState<string>("");
     const [amount,setAmount] = React.useState(0);
     return (
         <>
