@@ -6,12 +6,14 @@ export interface Itransaction {
     id: number;
     text: string;
     amount: number;
+    date: string;
+
 }
 
 export interface ITransactions {
     transactions: Itransaction[];
-    deleteTransaction? :(id:number)=>void;
-    addTransaction?:(transaction:Itransaction)=>void;
+    deleteTransaction?: (id: number) => void;
+    addTransaction?: (transaction: Itransaction) => void;
 }
 
 
@@ -48,7 +50,7 @@ export const GlobalProvider = ({ children }: any) => {
         });
     }
 
-    return (<GlobalContext.Provider value={{ transactions: state.transactions,deleteTransaction,addTransaction }}>
+    return (<GlobalContext.Provider value={{ transactions: state.transactions, deleteTransaction, addTransaction }}>
         {children}
     </GlobalContext.Provider>)
 }

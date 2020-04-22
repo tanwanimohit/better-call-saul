@@ -1,14 +1,25 @@
-.btn {
+.income-btn {
     cursor: pointer;
-    background-color: #9c88ff;
-    box-shadow: var(--box-shadow);
+    background-color: #48ff70;
     color: #fff;
     border: 0;
-    display: block;
-    font-size: 16px;
-    margin: 10px 0 30px;
+    display: inline;
+    font-size: 15px;
+    margin: 10px 10px 10px 0;
     padding: 10px;
-    width: 100%;
+    min-width: 46.5%;
+}
+
+.expense-btn {
+    cursor: pointer;
+    background-color: #fc4c4c;
+    color: #fff;
+    border: 0;
+    display: inline;
+    font-size: 15px;
+    margin: 10px 10px 10px 0;
+    padding: 10px;
+    min-width: 46.5%;
 }
 
 label {
