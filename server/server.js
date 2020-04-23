@@ -1,18 +1,24 @@
-//packages
+//packages  
 const express = require('express');
 const dotenv = require('dotenv');
 const colors = require('colors');
 const morgan = require('morgan');
+const connectDB = require('./config/db');
 
 //Express App declartion
 const app = express();
 
-//importing Routes 
-const transactions = require('./routes/transaction');
-
 //to add dotenv config it is running on local
 if (process.env.NODE_ENV != "production")
     dotenv.config({ path: './config/config.env' });
+
+//Connecting DB
+connectDB();
+
+//importing Routes 
+const transactions = require('./routes/transaction');
+
+
 
 app.use('/api/v1/transactions', transactions);
 

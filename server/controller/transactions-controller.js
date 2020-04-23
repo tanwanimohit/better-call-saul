@@ -1,8 +1,10 @@
+const Transactions = require('../models/transactions-model')
+
 // @desc  Get all the transaction
 // @routes GET /api/v1/transactions
 // @access Public 
 exports.getTransactions = (req, res, next) => {
-    res.send('GET Transactions');
+
 }
 
 // @desc  Add a transaction
