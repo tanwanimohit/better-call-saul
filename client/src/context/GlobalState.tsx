@@ -97,7 +97,7 @@ export const GlobalProvider = ({ children }: any) => {
 
     }
 
-    return (<GlobalContext.Provider value={{ transactions: state.transactions, deleteTransaction, addTransaction, getTranscations }}>
+    return (<GlobalContext.Provider value={{ transactions: state.transactions, deleteTransaction, addTransaction, getTranscations,loading:state.loading }}>
         {children}
     </GlobalContext.Provider>)
 }

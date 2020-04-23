@@ -1,5 +1,6 @@
 import React from 'react'
 import { Itransaction } from '../../context/GlobalState'
+import { numberWithCommas } from '../../utils/format';
 
 interface IProps {
     transaction: Itransaction;
@@ -18,7 +19,7 @@ export const Transaction = (props: IProps) => {
     return (
         <>
             <li key={transaction.id} className={transaction.amount > 0 ? "plus" : "minus"}>
-    {transaction.text} <span>{sign}₹{Math.abs(transaction.amount)}</span><p>{transaction.date}</p>
+    {transaction.text} <span>{sign}₹{numberWithCommas(Math.abs(transaction.amount).toString())}</span><p>{transaction.date}</p>
                 <button onClick={CallAction} className="delete-btn">X</button>
             </li>
         </>
