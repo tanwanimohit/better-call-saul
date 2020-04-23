@@ -4,15 +4,15 @@ import { Itransaction } from '../../context/GlobalState'
 interface IProps {
     transaction: Itransaction;
     key: number;
-    onClick: ((id: number) => void) | undefined;
+    onClick: ((id: string) => void) | undefined;
 }
 
 export const Transaction = (props: IProps) => {
     const transaction = props.transaction;
     const sign = transaction.amount > 0 ? "+" : "-";
     const CallAction = () => {
-        if (props.onClick !== undefined) {
-            props.onClick(transaction.id);
+        if (props.transaction._id!==undefined && props.onClick !== undefined ) {
+            props.onClick(transaction._id || "");
         }
     }
     return (

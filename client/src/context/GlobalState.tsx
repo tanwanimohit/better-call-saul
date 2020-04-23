@@ -1,8 +1,10 @@
 import React, { Reducer } from 'react'
+import axios from 'axios'
 
 import { AppReducer } from './AppReducer';
 
 export interface Itransaction {
+    _id?: string;
     id: number;
     text: string;
     amount: number;
@@ -12,8 +14,11 @@ export interface Itransaction {
 
 export interface ITransactions {
     transactions: Itransaction[];
-    deleteTransaction?: (id: number) => void;
+    deleteTransaction?: (id: string) => void;
+    getTranscations?: () => void;
     addTransaction?: (transaction: Itransaction) => void;
+    error?: string;
+    loading?: boolean;
 }
 
 
@@ -24,7 +29,8 @@ export interface IAction {
 
 //Default Value
 const initialState: ITransactions = {
-    transactions: []
+    transactions: [],
+    loading: true
 }
 
 //Context
@@ -34,23 +40,64 @@ export const GlobalContext = React.createContext(initialState);
 export const GlobalProvider = ({ children }: any) => {
     const [state, dispatch] = React.useReducer<Reducer<ITransactions, IAction>>(AppReducer, initialState);
 
-    const deleteTransaction = (id: number) => {
-        dispatch({
-            type: "DELETE_TRANSACTION",
-            payload: id
-
-        });
+    //Actions
+    async function getTranscations() {
+        try {
+            const res = await axios.get('api/v1/transactions/');
+            dispatch({
+                type: 'GET_TRANSACTIONS',
+                payload: res.data.data
+            });
+        } catch (error) {
+            dispatch({
+                type: 'TRANSACTION_ERROR',
+                payload: error.response.data.error
+            });
+        }
     }
 
-    const addTransaction = (transaction: Itransaction) => {
-        dispatch({
-            type: "ADD_TRANSACTION",
-            payload: transaction
+    const deleteTransaction = async (id: string) => {
+        try {
+            await axios.delete(`api/v1/transactions/${id}`);
+            dispatch({
+                type: "DELETE_TRANSACTION",
+                payload: id
 
-        });
+            });
+        } catch (error) {
+            dispatch({
+                type: 'TRANSACTION_ERROR',
+                payload: error.response.data.error
+            });
+        }
+
     }
 
-    return (<GlobalContext.Provider value={{ transactions: state.transactions, deleteTransaction, addTransaction }}>
+    const addTransaction = async (transaction: Itransaction) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+
+        }
+        try {
+            const res = await axios.post('api/v1/transactions/', transaction, config);
+            dispatch({
+                type: "ADD_TRANSACTION",
+                payload: res.data.data
+
+            });
+        } catch (error) {
+            dispatch({
+                type: 'TRANSACTION_ERROR',
+                payload: error.response.data.error
+            });
+        }
+
+
+    }
+
+    return (<GlobalContext.Provider value={{ transactions: state.transactions, deleteTransaction, addTransaction, getTranscations }}>
         {children}
     </GlobalContext.Provider>)
 }

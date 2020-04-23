@@ -7,11 +7,14 @@ const connectDB = require('./config/db');
 
 //Express App declartion
 const app = express();
+app.use(express.json());
 
 //to add dotenv config it is running on local
 if (process.env.NODE_ENV != "production")
     dotenv.config({ path: './config/config.env' });
 
+if (process.env.NODE_ENV != "production")
+    app.use(morgan('dev'));
 //Connecting DB
 connectDB();
 

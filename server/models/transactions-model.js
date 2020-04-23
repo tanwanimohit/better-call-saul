@@ -14,7 +14,12 @@ const TransactionSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
 
-    }
+    },
+    date: {
+        type: String,
+        trim: true,
+        required: false
+    },
 });
 
 module.exports = mongoose.model('TransactionSchema', TransactionSchema);

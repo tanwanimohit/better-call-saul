@@ -13,6 +13,7 @@ export const Addtransaction = () => {
         if (amount > 0 && text.length > 0) {
             const transaction = {
                 id: (Math.random() * 1000000),
+                
                 text: text,
                 amount: str === "income" ? Math.abs(amount) : Math.abs(amount) * (-1),
                 date: date
