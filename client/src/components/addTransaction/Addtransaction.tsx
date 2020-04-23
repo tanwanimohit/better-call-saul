@@ -20,6 +20,8 @@ export const Addtransaction = () => {
             }
             if (addTransaction !== undefined) {
                 addTransaction(transaction);
+                setText('');
+                setAmount(0);
             }
         }
 
