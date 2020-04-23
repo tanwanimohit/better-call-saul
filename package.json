@@ -7,7 +7,7 @@
         "start": "cd server && node server.js",
         "server": "cd server && nodemon server",
         "client": "cd client && yarn start",
-        "build": "cd client && yarn build",
+        "build": "cd client && yarn install && yarn build",
         "dev": "concurrently \"yarn server\" \"yarn client\""
     },
     "repository": {
