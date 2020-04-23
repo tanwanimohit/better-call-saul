@@ -35,4 +35,5 @@ yarn-error.log*
 .now
 /client/.now
 
-/config/config.env
+server/config/config.env
+
