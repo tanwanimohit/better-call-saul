@@ -1,7 +1,13 @@
 import React from 'react'
 import './style.css'
 import { GlobalContext } from '../../context/GlobalState';
-export const Addtransaction = () => {
+
+interface IProp
+{
+    email:string;
+}
+
+export const Addtransaction = (props:IProp) => {
     const [text, setText] = React.useState<string>("");
     const [amount, setAmount] = React.useState(0);
     const { addTransaction } = React.useContext(GlobalContext);
@@ -16,7 +22,8 @@ export const Addtransaction = () => {
                 
                 text: text,
                 amount: str === "income" ? Math.abs(amount) : Math.abs(amount) * (-1),
-                date: date
+                date: date,
+                user:props.email
             }
             if (addTransaction !== undefined) {
                 addTransaction(transaction);

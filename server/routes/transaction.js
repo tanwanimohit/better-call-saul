@@ -4,11 +4,14 @@ const { getTransactions, addTransactions, deleteTransactions } = require('../con
 
 router
     .route('/')
-    .get(getTransactions)
     .post(addTransactions);
 
 router
     .route('/:id')
     .delete(deleteTransactions);
+
+router
+    .route('/:user')
+    .get(getTransactions);
 
 module.exports = router;

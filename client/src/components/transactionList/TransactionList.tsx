@@ -3,12 +3,22 @@ import './style.css'
 import { GlobalContext } from '../../context/GlobalState'
 import { Transaction } from '../transaction/Transaction';
 import { Spinner } from '../spinner/Spinner';
-export const TransactionList = () => {
+
+interface IProp
+{
+    email:string;
+}
+
+export const TransactionList = (props:IProp) => {
     const {loading, deleteTransaction,transactions,getTranscations} = React.useContext(GlobalContext);
     const [transactionLength,settransactionLength]=React.useState(10);
     React.useEffect(()=>{
         if(getTranscations!==undefined)
-            getTranscations();
+        {
+            getTranscations(props.email);
+            //console.log(props.email);
+        }
+            
             // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     

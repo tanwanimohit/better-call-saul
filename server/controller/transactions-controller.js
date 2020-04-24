@@ -5,7 +5,7 @@ const Transactions = require('../models/transactions-model')
 // @access Public 
 exports.getTransactions = async(req, res, next) => {
     try {
-        const transaction = await Transactions.find();
+        const transaction = await Transactions.find({ user: req.params.user });
         return res.status(200).json({
             sucsess: true,
             count: transaction.length,

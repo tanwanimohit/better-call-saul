@@ -25,15 +25,15 @@ h3 {
     margin: 40px 0 10px;
 }
 
-.expense-btn {
-    cursor: pointer;
-    background-color: #fc4c4c;
-    color: #fff;
-    border: 0;
-    float: right;
-    /* display: inline; */
-    font-size: 15px;
-    margin: 10px;
-    padding: 10px;
-    min-width: 40%;
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+
+.left {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }

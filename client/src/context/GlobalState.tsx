@@ -15,7 +15,7 @@ export interface Itransaction {
 export interface ITransactions {
     transactions: Itransaction[];
     deleteTransaction?: (id: string) => void;
-    getTranscations?: () => void;
+    getTranscations?: (email:string) => void;
     addTransaction?: (transaction: Itransaction) => void;
     error?: string;
     loading?: boolean;
@@ -41,9 +41,9 @@ export const GlobalProvider = ({ children }: any) => {
     const [state, dispatch] = React.useReducer<Reducer<ITransactions, IAction>>(AppReducer, initialState);
 
     //Actions
-    async function getTranscations() {
+    async function getTranscations(email:string) {
         try {
-            const res = await axios.get('api/v1/transactions/');
+            const res = await axios.get(`api/v1/transactions/${email}`);
             dispatch({
                 type: 'GET_TRANSACTIONS',
                 payload: res.data.data

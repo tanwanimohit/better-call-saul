@@ -20,6 +20,11 @@ const TransactionSchema = new mongoose.Schema({
         trim: true,
         required: false
     },
+    user: {
+        type: String,
+        trim: true,
+        required: [true, 'Email Id Missing']
+    },
 });
 
 module.exports = mongoose.model('TransactionSchema', TransactionSchema);
