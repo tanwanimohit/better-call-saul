@@ -4,7 +4,7 @@ This is a Money Manager / Expenses Tracker app created in React.
 ## Requirement 
 - Node [Install from here](https://nodejs.org/en/)
 - Yarn [Install from here](https://classic.yarnpkg.com/en/docs/install/#debian-stable)
-- MongoDB instance (Free Mongo DB)[https://www.mongodb.com/]
+- MongoDB instance [Get it from here](https://www.mongodb.com/)
 
 ## Repository Information
 - `/client` contains REACT code.

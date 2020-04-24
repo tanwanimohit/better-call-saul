@@ -24,6 +24,9 @@ export const Addtransaction = () => {
                 setAmount(0);
             }
         }
+        else{
+            alert('Kindly add text and amount correctly')
+        }
 
     }
     return (
@@ -35,8 +38,7 @@ export const Addtransaction = () => {
                     <input type="text" autoComplete="off" id="text" maxLength={25} value={text} onChange={(e) => setText(e.target.value)} placeholder="What is this About?" />
                 </div>
                 <div className="form-control">
-                    <label htmlFor="amount">Amount </label
-                    >
+                    <label htmlFor="amount">Amount </label>
                     <input type="number" step="any" id="amount" value={amount} onChange={(e) => setAmount(parseFloat(e.target.value))} placeholder="Enter amount..." />
                 </div>
                 <button onClick={() => addTrans("income")} type="button" className="income-btn"> Add Income</button>
