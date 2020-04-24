@@ -4,7 +4,7 @@ import { numberWithCommas } from '../../utils/format';
 
 interface IProps {
     transaction: Itransaction;
-    key: number;
+    key: string;
     onClick: ((id: string) => void) | undefined;
 }
 

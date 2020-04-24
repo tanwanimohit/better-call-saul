@@ -5,21 +5,33 @@ import { Transaction } from '../transaction/Transaction';
 import { Spinner } from '../spinner/Spinner';
 export const TransactionList = () => {
     const {loading, deleteTransaction,transactions,getTranscations} = React.useContext(GlobalContext);
+    const [transactionLength,settransactionLength]=React.useState(10);
     React.useEffect(()=>{
         if(getTranscations!==undefined)
             getTranscations();
             // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
+    
+    const increaseLength = () => {
+        const newLength = transactionLength+10;
+        if(newLength<transactions.length)
+            settransactionLength(newLength);
+        else
+            settransactionLength(transactions.length);
+    }
+    
     return (
         <>
             <h3>History</h3>
             {loading && <Spinner/>}
             <ul id="list" className="list">
-                {transactions.map(transaction => (
-                   <Transaction key={transaction.id} transaction={transaction} onClick={deleteTransaction }  />
+                {transactions.slice().reverse().slice(0,transactionLength).map(transaction => (
+                   <Transaction key={transaction._id || " "} transaction={transaction} onClick={deleteTransaction }  />
                 ))}
-                
+                { !loading && transactionLength<transactions.length && <button type="button" onClick={increaseLength} className="loadmore-btn"> Load more</button>}
             </ul>
+            
+            
         </>
     )
 }

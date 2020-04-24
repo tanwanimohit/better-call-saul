@@ -24,3 +24,16 @@ h3 {
     padding-bottom: 10px;
     margin: 40px 0 10px;
 }
+
+.expense-btn {
+    cursor: pointer;
+    background-color: #fc4c4c;
+    color: #fff;
+    border: 0;
+    float: right;
+    /* display: inline; */
+    font-size: 15px;
+    margin: 10px;
+    padding: 10px;
+    min-width: 40%;
+}

@@ -37,7 +37,7 @@ export const Addtransaction = () => {
                 <div className="form-control">
                     <label htmlFor="amount">Amount </label
                     >
-                    <input type="number" id="amount" value={amount} onChange={(e) => setAmount(parseInt(e.target.value))} placeholder="Enter amount..." />
+                    <input type="number" step="any" id="amount" value={amount} onChange={(e) => setAmount(parseFloat(e.target.value))} placeholder="Enter amount..." />
                 </div>
                 <button onClick={() => addTrans("income")} type="button" className="income-btn"> Add Income</button>
                 <button onClick={() => addTrans("expense")} type="button" className="expense-btn"> Add Expense</button>

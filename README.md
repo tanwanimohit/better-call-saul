@@ -17,7 +17,7 @@ This is a Money Manager / Expenses Tracker app created in React.
 - Make Sure you have dev Dependencies as well.
 
 ## Add config.env
-Goto Conifg folder and created a file `config.env` and add this code.
+Goto `Server/Conifg` folder and created a file `config.env` and add this code.
 ```
 NODE_ENV=development
 PORT=5000

@@ -46,3 +46,16 @@
 .list li:hover .delete-btn {
     opacity: 1;
 }
+
+.loadmore-btn {
+    cursor: pointer;
+    background-color: #01a2ff;
+    color: #fff;
+    border: 0;
+    display: block;
+    font-size: 15px;
+    float: center;
+    margin: auto auto;
+    padding: 10px;
+    min-width: 40%;
+}
