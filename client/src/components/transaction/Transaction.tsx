@@ -19,7 +19,7 @@ export const Transaction = (props: IProps) => {
     }
     return (
         <>
-            <li key={transaction.id} className={transaction.amount > 0 ? props.darkMode? "plus darkmode" : "plus" : props.darkMode ? "minus darkMode" : "minus"}>
+            <li key={transaction.id} className={transaction.amount > 0 ? props.darkMode? "plus darkmode" : "plus" : props.darkMode ? "minus darkmode" : "minus"}>
     {transaction.text} <span>{sign}₹{numberWithCommas(Math.abs(transaction.amount).toString())}</span><p>{transaction.date}</p>
                 <button onClick={CallAction} className="delete-btn">X</button>
             </li>

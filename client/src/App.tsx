@@ -11,7 +11,7 @@ import { GoogleLogin, GoogleLogout } from 'react-google-login';
 function App() {
   const [singIn, setsingIn] = React.useState(false)
   const [email, setemail] = React.useState("");
-  const [darkMode, setDarkMode] = React.useState(localStorage.getItem("theme")=="dark" ? true : false);
+  const [darkMode, setDarkMode] = React.useState(localStorage.getItem("theme")==="dark" ? true : false);
   const responseGoogle = (response: any) => {
     //console.log(response.profileObj.email);
     setemail(response.profileObj.email);
