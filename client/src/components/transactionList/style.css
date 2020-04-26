@@ -20,11 +20,11 @@
 }
 
 .list li.plus {
-    border-right: 5px solid #2ecc71;
+    border-right: 5px solid #2ecc71 !important;
 }
 
 .list li.minus {
-    border-right: 5px solid #c0392b;
+    border-right: 5px solid #c0392b !important;
 }
 
 .delete-btn {

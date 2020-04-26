@@ -7,6 +7,7 @@ import { Spinner } from '../spinner/Spinner';
 interface IProp
 {
     email:string;
+    darkMode : boolean
 }
 
 export const TransactionList = (props:IProp) => {
@@ -36,7 +37,7 @@ export const TransactionList = (props:IProp) => {
             {loading && <Spinner/>}
             <ul id="list" className="list">
                 {transactions.slice().reverse().slice(0,transactionLength).map(transaction => (
-                   <Transaction key={transaction._id || " "} transaction={transaction} onClick={deleteTransaction }  />
+                   <Transaction key={transaction._id || " "} transaction={transaction} onClick={deleteTransaction } darkMode={props.darkMode} />
                 ))}
                 { !loading && transactionLength<transactions.length && <button type="button" onClick={increaseLength} className="loadmore-btn"> Load more</button>}
             </ul>

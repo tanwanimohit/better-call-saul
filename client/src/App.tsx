@@ -11,18 +11,48 @@ import { GoogleLogin, GoogleLogout } from 'react-google-login';
 function App() {
   const [singIn, setsingIn] = React.useState(false)
   const [email, setemail] = React.useState("");
-
+  const [darkMode, setDarkMode] = React.useState(localStorage.getItem("theme")=="dark" ? true : false);
   const responseGoogle = (response: any) => {
     //console.log(response.profileObj.email);
     setemail(response.profileObj.email);
+    
     setsingIn(true);
   }
   const logout = () => {
     setsingIn(false);
   }
+
+  React.useEffect(()=>{
+    if(darkMode)
+    {
+      document.querySelector('body')?.classList.add('dark');
+      localStorage.setItem('theme',"dark");
+    }
+    else
+    {
+      document.querySelector('body')?.classList.remove('dark');
+      localStorage.setItem('theme',"light");
+    }
+  },[darkMode]);
+
   return (
     <GlobalProvider>
-      <Header />
+      
+      {singIn && 
+      <div className="left">      
+        <label className="switch">
+          <input type="checkbox" onClick={() => setDarkMode(!darkMode)} checked={darkMode ? true :false } />
+          <span className="slider round"></span>
+        </label>
+        <GoogleLogout
+          clientId="1016751924821-9a88qsp53eu7o6dhf3gh4gab0fi06vlo.apps.googleusercontent.com"
+          buttonText="Logout"
+          onLogoutSuccess={logout}
+        ></GoogleLogout>
+      </div>
+      }
+      <Header darkMode={darkMode} /> 
+      
       {singIn === false &&
         <div className="center">
           <GoogleLogin
@@ -38,19 +68,12 @@ function App() {
       {singIn &&
 
         <div className="container">
-          <div className="left">
-            
-            <GoogleLogout
-              clientId="1016751924821-9a88qsp53eu7o6dhf3gh4gab0fi06vlo.apps.googleusercontent.com"
-              buttonText="Logout"
-              onLogoutSuccess={logout}
-            ></GoogleLogout>
-          </div>
+          
 
           <Balance />
-          <IncomeExpenses />
-          <Addtransaction email={email} />
-          <TransactionList email={email} />
+          <IncomeExpenses darkMode={darkMode} />
+          <Addtransaction email={email} darkMode={darkMode} />
+          <TransactionList email={email} darkMode={darkMode}  />
         </div>
       }
     </GlobalProvider>
