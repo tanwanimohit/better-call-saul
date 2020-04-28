@@ -17,7 +17,7 @@ export const Addtransaction = (props:IProp) => {
 
         var today = new Date();
         var date =  today.getDate()+ '-' + (today.getMonth() + 1);
-        if (amount > 0 && text.length > 0) {
+        if (amount > 0 && text.length > 0 ) {
             const transaction = {
                 id: (Math.random() * 1000000),
                 
@@ -26,7 +26,11 @@ export const Addtransaction = (props:IProp) => {
                 date: date,
                 user:props.email
             }
-            if (addTransaction !== undefined) {
+            if(amount > 10000000)
+            {
+                alert('Amount should be less than 10000000');
+            }
+            else if (addTransaction !== undefined) {
                 addTransaction(transaction);
                 setText('');
                 setAmount(0);
@@ -47,7 +51,7 @@ export const Addtransaction = (props:IProp) => {
                 </div>
                 <div className="form-control">
                     <label htmlFor="amount">Amount </label>
-                    <input type="number" className={props.darkMode ? "darkmode" : ""} step="any" id="amount" value={amount} onChange={(e) => setAmount(parseFloat(e.target.value))} placeholder="Enter amount..." />
+                    <input type="number" className={props.darkMode ? "darkmode" : ""} step="any" id="amount" pattern="\d*"  value={amount} onChange={(e) => setAmount(parseFloat(e.target.value))} placeholder="Enter amount..." />
                 </div>
                 <button onClick={() => addTrans("income")} type="button" className="income-btn"> Add Income</button>
                 <button onClick={() => addTrans("expense")} type="button" className="expense-btn"> Add Expense</button>
