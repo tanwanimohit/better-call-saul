@@ -41,7 +41,7 @@ function App() {
       {singIn && 
       <div className="left">      
         <label className="switch">
-          <input type="checkbox" onClick={() => setDarkMode(!darkMode)} checked={darkMode ? true :false } />
+          <input type="checkbox" onClick={() => setDarkMode(!darkMode)} defaultChecked={darkMode ? true :false } />
           <span className="slider round"></span>
         </label>
         <GoogleLogout

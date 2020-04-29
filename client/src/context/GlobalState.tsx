@@ -9,7 +9,7 @@ export interface Itransaction {
     text: string;
     amount: number;
     date: string;
-
+    createdAt?:Date;
 }
 
 export interface ITransactions {

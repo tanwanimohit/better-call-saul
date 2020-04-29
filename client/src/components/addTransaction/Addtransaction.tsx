@@ -21,7 +21,7 @@ export const Addtransaction = (props:IProp) => {
             const transaction = {
                 id: (Math.random() * 1000000),
                 
-                text: text,
+                text: text.slice(0,25),
                 amount: str === "income" ? Math.abs(amount) : Math.abs(amount) * (-1),
                 date: date,
                 user:props.email
