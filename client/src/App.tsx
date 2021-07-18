@@ -72,7 +72,7 @@ function App() {
         <div className="container">
           <Balance />
           <IncomeExpenses darkMode={darkMode} />
-          <Addtransaction email={email} darkMode={darkMode} />
+          <Addtransaction email={email} token={token} darkMode={darkMode} />
           <TransactionList email={token} darkMode={darkMode} />
         </div>
       )}
