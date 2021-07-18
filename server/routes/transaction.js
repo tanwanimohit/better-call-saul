@@ -11,7 +11,7 @@ router
     .delete(deleteTransactions);
 
 router
-    .route('/:user')
+    .route('/')
     .get(getTransactions);
 
 module.exports = router;
