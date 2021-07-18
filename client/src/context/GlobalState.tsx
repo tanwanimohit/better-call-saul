@@ -16,7 +16,7 @@ export interface ITransactions {
   transactions: Itransaction[];
   deleteTransaction?: (id: string) => void;
   getTranscations?: (email: string) => void;
-  addTransaction?: (transaction: Itransaction) => void;
+  addTransaction?: (transaction: Itransaction, token: string) => void;
   error?: string;
   loading?: boolean;
 }
@@ -79,10 +79,11 @@ export const GlobalProvider = ({ children }: any) => {
     }
   };
 
-  const addTransaction = async (transaction: Itransaction) => {
+  const addTransaction = async (transaction: Itransaction, token: string) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
+        token: token,
       },
     };
     try {
