@@ -64,6 +64,7 @@ function App() {
             ux_mode="redirect"
             context="signin"
             itp_support={true}
+            state_cookie_domain="https://mohit.rocks/"
           />
         </div>
       )}
