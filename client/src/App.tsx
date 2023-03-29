@@ -6,7 +6,6 @@ import { IncomeExpenses } from "./components/incomeExpenses/IncomeExpenses";
 import { TransactionList } from "./components/transactionList/TransactionList";
 import { Addtransaction } from "./components/addTransaction/Addtransaction";
 import { GlobalProvider } from "./context/GlobalState";
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 
 function App() {
@@ -36,47 +35,43 @@ function App() {
   }, [darkMode]);
 
   return (
-    <GoogleOAuthProvider clientId="1016751924821-9a88qsp53eu7o6dhf3gh4gab0fi06vlo.apps.googleusercontent.com">
-      <GlobalProvider>
-        
-        {singIn && (
-          <div className="left">
-            <label className="switch">
-              <input
-                type="checkbox"
-                onClick={() => setDarkMode(!darkMode)}
-                defaultChecked={darkMode ? true : false}
-              />
-              <span className="slider round"></span>
-            </label>
-          <button onClick={logout}>Logout</button>
+    <GlobalProvider>
+      {singIn && (
+        <div className="left">
+          <label className="switch">
+            <input
+              type="checkbox"
+              onClick={() => setDarkMode(!darkMode)}
+              defaultChecked={darkMode ? true : false}
+            />
+            <span className="slider round"></span>
+          </label>
+          <button className="logout" onClick={logout}>Logout</button>
         </div>
       )}
       <Header darkMode={darkMode} />
-
-        {singIn === false && (
-          <div className="center">
-            <GoogleLogin
-              onSuccess={responseGoogle}
-              onError={() => {
-                console.log('Login Failed');
-              }}
-              useOneTap
-              auto_select
-              theme="filled_blue"
-            />
-          </div>
-        )}
-        {singIn && (
-          <div className="container">
-            <Balance />
-            <IncomeExpenses darkMode={darkMode} />
-            <Addtransaction token={token} darkMode={darkMode} />
-            <TransactionList email={token} darkMode={darkMode} />
-          </div>
-        )}
-      </GlobalProvider>
-    </GoogleOAuthProvider>
+      {singIn === false && (
+        <div className="center">
+          <GoogleLogin
+            onSuccess={responseGoogle}
+            onError={() => {
+              console.log('Login Failed');
+            }}
+            useOneTap={true}
+            auto_select={true}
+            theme="filled_blue"
+          />
+        </div>
+      )}
+      {singIn && (
+        <div className="container">
+          <Balance />
+          <IncomeExpenses darkMode={darkMode} />
+          <Addtransaction token={token} darkMode={darkMode} />
+          <TransactionList email={token} darkMode={darkMode} />
+        </div>
+      )}
+    </GlobalProvider>
   );
 }
 

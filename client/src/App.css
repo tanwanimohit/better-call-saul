@@ -34,6 +34,16 @@ body {
     transition: background-color 0.5s ease;
 }
 
+.logout {
+  background-color: #1a73e8;
+  color: white;
+  outline: none;
+  padding: 0.7rem;
+  border: 0px;
+  font-weight: bold;
+  border-radius: 0.2rem;
+}
+
 .container {
     padding: 3vh 0;
 }
