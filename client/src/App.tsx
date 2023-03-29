@@ -61,8 +61,6 @@ function App() {
             auto_select={true}
             theme="filled_blue"
             login_uri="https://money.mohit.rocks/"
-            ux_mode="redirect"
-            context="signin"
           />
         </div>
       )}
