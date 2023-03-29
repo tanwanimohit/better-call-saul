@@ -63,8 +63,6 @@ function App() {
             login_uri="https://money.mohit.rocks/"
             ux_mode="redirect"
             context="signin"
-            itp_support={true}
-            state_cookie_domain="https://mohit.rocks/"
           />
         </div>
       )}
