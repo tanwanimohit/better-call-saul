@@ -3,7 +3,6 @@ import "./style.css";
 import { GlobalContext } from "../../context/GlobalState";
 
 interface IProp {
-  email: string;
   token: string;
   darkMode: boolean;
 }
