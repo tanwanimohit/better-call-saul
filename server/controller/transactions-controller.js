@@ -29,7 +29,7 @@ async function verify(token, req, res) {
   } finally {
     if (response == "success") {
       //Setting the Session
-      const transaction = await Transactions.find({ user: user.email });
+      const transaction = await Transactions.find({ user: user.email }).sort({ date: -1 });
       return res.status(200).json({
         sucsess: true,
         count: transaction.length,
